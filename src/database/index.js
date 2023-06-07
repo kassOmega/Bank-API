@@ -15,7 +15,6 @@ const CustomerUser = db.define(
     phoneNumber: {
       type: DataTypes.STRING(25),
       allowNull: false,
-      unique: true,
     },
     password: {
       type: DataTypes.STRING(255),
@@ -25,8 +24,32 @@ const CustomerUser = db.define(
   { timestamps: true }
 );
 
+const Account = db.define(
+  "Account",
+  {
+    accountNumber: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.BIGINT({ unsigned: true }),
+    },
+    accountType: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      defaultValue: "savings",
+    },
+    accountBalance: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: 0.0,
+    },
+  },
+  { timestamps: true }
+);
+
+CustomerUser.hasMany(Account, { foreignKey: "customerId", constraints: true });
+
 db.sync({ alter: true })
   .then(() => console.log("models synced"))
   .catch((err) => console.log("syncing models error: ", err));
 
-module.exports = { CustomerUser };
+module.exports = { CustomerUser, Account };
