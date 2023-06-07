@@ -2,14 +2,19 @@
   "name": "bank-server",
   "version": "1.0.0",
   "description": "this is a minimal online bank providing server",
-  "main": "index.js",
+  "main": "src/index.js",
   "author": "Kassahun Takele",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start": "nodemon"
+  },
   "dependencies": {
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mysql2": "^3.3.3",
-    "typeorm": "^0.3.16"
+    "sequelize": "^6.32.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
