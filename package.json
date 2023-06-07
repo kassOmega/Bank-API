@@ -1,0 +1,9 @@
+{
+  "name": "bank-server",
+  "version": "1.0.0",
+  "description": "this is a minimal online bank providing server",
+  "main": "index.js",
+  "author": "Kassahun Takele",
+  "license": "MIT",
+  "private": false
+}
