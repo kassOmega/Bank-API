@@ -11,6 +11,7 @@ app.use(express.json());
 
 app.use("/api/customer", require("./routes/customer"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/banker", require("./routes/banker"));
 
 app.get("/", (req, res) => res.send("healthy!"));
 

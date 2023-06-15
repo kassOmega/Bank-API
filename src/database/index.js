@@ -46,10 +46,34 @@ const Account = db.define(
   { timestamps: true }
 );
 
+const Banker = db.define(
+  "Banker",
+  {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.BIGINT({ unsigned: true }),
+    },
+    fullName: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING(25),
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { timestamps: true }
+);
+
 CustomerUser.hasMany(Account, { foreignKey: "customerId", constraints: true });
 
 db.sync({ alter: true })
   .then(() => console.log("models synced"))
   .catch((err) => console.log("syncing models error: ", err));
 
-module.exports = { CustomerUser, Account };
+module.exports = { CustomerUser, Account, Banker };
