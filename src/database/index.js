@@ -45,6 +45,16 @@ const Account = db.define(
   },
   { timestamps: true }
 );
+const Admin = db.define(
+  "Admin",
+  {
+    password: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { timestamps: true }
+);
 
 const Banker = db.define(
   "Banker",
@@ -66,6 +76,10 @@ const Banker = db.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    suspended: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   { timestamps: true }
 );
@@ -76,4 +90,4 @@ db.sync({ alter: true })
   .then(() => console.log("models synced"))
   .catch((err) => console.log("syncing models error: ", err));
 
-module.exports = { CustomerUser, Account, Banker };
+module.exports = { CustomerUser, Account, Banker, Admin };

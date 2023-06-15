@@ -15,4 +15,8 @@ app.use("/api/banker", require("./routes/banker"));
 
 app.get("/", (req, res) => res.send("healthy!"));
 
+// app.use((req, res, next, err) => {
+//   res.json({ error: err });
+// });
+
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
